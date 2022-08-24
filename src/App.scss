@@ -1,0 +1,11 @@
+.App {
+  background-color: cornflowerblue;
+  color: aliceblue;
+  padding: 100px 200px;
+  margin: 50px auto;
+  .child {
+    background-color: aqua;
+    color: black;
+    padding: 50px;
+  }
+}

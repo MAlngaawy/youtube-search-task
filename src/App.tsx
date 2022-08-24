@@ -1,9 +1,14 @@
 
-import './App.css';
+import './App.scss';
 
 const App = () : JSX.Element => {
   return (
-    <div>Hello</div>
+    <div className='App'>
+      this is Parent
+      <p className="child">
+        This is Child
+      </p>
+    </div>
   );
 }
 
