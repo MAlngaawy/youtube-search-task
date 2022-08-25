@@ -6,8 +6,34 @@
 @import url(./components/conponents-styles.scss);
 
 .App {
+  background-color: rgb(240, 240, 240);
+  min-height: 100vh;
   .container {
     max-width: 60%;
     margin: auto;
+  }
+  .data {
+    display: flex;
+    flex-direction: column;
+    &__video {
+      display: flex;
+      margin: 10px 0;
+      .info {
+        margin-left: 20px;
+        &__heading {
+          font-weight: 400;
+          color: #202020;
+        }
+        &__channel {
+          font-size: 15px;
+          color: #535353;
+        }
+        &__description {
+          margin-top: 10px;
+          color: #525252;
+          line-height: 1.3;
+        }
+      }
+    }
   }
 }

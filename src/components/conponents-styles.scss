@@ -1,7 +1,9 @@
 // NavBar Component Styles
 .navbar {
-  box-shadow: 0 5px 10px #eee;
+  box-shadow: 0 5px 10px rgb(238, 238, 238);
   margin-bottom: 50px;
+  background-color: #fff;
+  padding: 10px 0;
   &__container {
     width: 80%;
     margin: auto;

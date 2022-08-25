@@ -14,17 +14,24 @@ const App = (): JSX.Element => {
           {data &&
             data.map((item: any) => {
               return (
-                <div key={item.id.videoId}>
+                <div key={item.id.videoId} className="data__video">
                   {/* <img
                   src={item.snippet.thumbnails.high.url}
                   alt="youtube Video"
                 /> */}
                   <iframe
                     title={item.id.videoId}
-                    width="420"
-                    height="315"
+                    width="300"
+                    height="200"
                     src={`https://www.youtube.com/embed/${item.id.videoId}`}
                   ></iframe>
+                  <div className="info">
+                    <h3 className="info__heading">{item.snippet.title}</h3>
+                    <p className="info__channel">{item.snippet.channelTitle}</p>
+                    <p className="info__description">
+                      {item.snippet.description}
+                    </p>
+                  </div>
                 </div>
               );
             })}
