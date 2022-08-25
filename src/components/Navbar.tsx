@@ -1,7 +1,12 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 // import logo from './logo.png'
+// @ts-ignore
+import request from "../api/youtube.ts";
 
 const Navbar = (): JSX.Element => {
+  const [data, setData] = useState([]);
+  console.log(data);
+
   return (
     <nav className="navbar">
       <div className="navbar__container">
@@ -9,28 +14,39 @@ const Navbar = (): JSX.Element => {
           <img src="./logo.png" alt="Logo" />
         </div>
         <div className="navbar__search">
-          <SearchComponent />
+          <SearchComponent setdata={setData} />
         </div>
+      </div>
+      <div className="data">
+        <h2>data</h2>
+        {data &&
+          data.map((item: any) => {
+            return <div key={item.id.videoId}>{item.id.videoId}</div>;
+          })}
       </div>
     </nav>
   );
 };
 
-const SearchComponent = () => {
-  const [search, setSearch] = useState(null);
+const SearchComponent = ({ setdata }) => {
+  const [keyword, setKeyWord] = useState(null);
+  const handle = async () => {
+    const response = await request.get("", {
+      params: {
+        q: keyword,
+      },
+    });
+    setdata(response.data.items);
+  };
 
   const handleChange = async (e) => {
-    setSearch(e.target.value);
+    setKeyWord(e.target.value);
   };
 
-  useEffect(() => {
-    // console.log(search);
-  }, [search]);
-
-  const submitFun = (e): void => {
+  async function submitFun(e) {
     e.preventDefault();
-    console.log(search);
-  };
+    handle();
+  }
 
   return (
     <form action="submit" onSubmit={submitFun}>
