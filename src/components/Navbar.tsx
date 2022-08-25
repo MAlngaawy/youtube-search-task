@@ -2,9 +2,10 @@ import React, { useState } from "react";
 // import logo from './logo.png'
 // @ts-ignore
 import request from "../api/youtube.ts";
+import { useStateContext } from "../contexts/ContextProvider";
 
 const Navbar = (): JSX.Element => {
-  const [data, setData] = useState([]);
+  const { data, setData } = useStateContext();
   console.log(data);
 
   return (
@@ -16,13 +17,6 @@ const Navbar = (): JSX.Element => {
         <div className="navbar__search">
           <SearchComponent setdata={setData} />
         </div>
-      </div>
-      <div className="data">
-        <h2>data</h2>
-        {data &&
-          data.map((item: any) => {
-            return <div key={item.id.videoId}>{item.id.videoId}</div>;
-          })}
       </div>
     </nav>
   );
