@@ -6,9 +6,6 @@ import { useStateContext } from "../contexts/ContextProvider";
 // @ts-ignore
 
 const Navbar = (): JSX.Element => {
-  const { data, setData } = useStateContext();
-  console.log(data);
-
   return (
     <nav className="navbar">
       <div className="navbar__container">
@@ -17,22 +14,23 @@ const Navbar = (): JSX.Element => {
           <Icon />
         </div>
         <div className="navbar__search">
-          <SearchComponent setdata={setData} />
+          <SearchComponent />
         </div>
       </div>
     </nav>
   );
 };
 
-const SearchComponent = ({ setdata }) => {
-  const [keyword, setKeyWord] = useState(null);
+const SearchComponent = () => {
+  const { setData, search, setSearch, screenWidth } = useStateContext();
+  const [keyword, setKeyWord] = useState("");
   const handle = async () => {
     const response = await request.get("", {
       params: {
         q: keyword,
       },
     });
-    setdata(response.data.items);
+    setData(response.data.items);
   };
 
   const handleChange = async (e) => {
@@ -40,14 +38,37 @@ const SearchComponent = ({ setdata }) => {
   };
 
   async function submitFun(e) {
-    setdata("loading");
     e.preventDefault();
-    handle();
+    if (search === "input") {
+      setData("loading");
+      handle();
+      setSearch("text");
+    } else {
+      setSearch("input");
+    }
   }
 
   return (
     <form action="submit" onSubmit={submitFun}>
-      <input type="search" placeholder="Search" onChange={handleChange} />
+      {screenWidth < 600 && search === "text" && (
+        <h3 className="serch-word">{keyword}</h3>
+      )}
+      {screenWidth < 600 && search === "input" && (
+        <input
+          value={keyword}
+          type="search"
+          placeholder="Search"
+          onChange={handleChange}
+        />
+      )}
+      {screenWidth >= 600 && (
+        <input
+          value={keyword}
+          type="search"
+          placeholder="Search"
+          onChange={handleChange}
+        />
+      )}
       <button type="submit">
         <img src="./search.png" alt="search" />
       </button>

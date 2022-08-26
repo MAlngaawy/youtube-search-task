@@ -59,6 +59,15 @@
     width: 80%;
     form {
       display: flex;
+      @include mobile() {
+        justify-content: space-between;
+        align-items: center;
+      }
+      .serch-word {
+        color: #fff;
+        font-size: 18px;
+        font-weight: 500;
+      }
       input {
         padding-left: 10px;
         height: 30px;
