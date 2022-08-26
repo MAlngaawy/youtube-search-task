@@ -20,29 +20,38 @@ const App = (): JSX.Element => {
                 <img src={loading} alt="" />{" "}
               </div>
             )) ||
-            (Array.isArray(data) &&
-              data.map((item: any) => {
-                return (
-                  <div key={item.id.videoId} className="data__video">
-                    <iframe
-                      className="video__frame"
-                      title={item.id.videoId}
-                      width="300"
-                      height="200"
-                      src={`https://www.youtube.com/embed/${item.id.videoId}`}
-                    ></iframe>
-                    <div className="info">
-                      <h3 className="info__heading">{item.snippet.title}</h3>
-                      <p className="info__channel">
-                        {item.snippet.channelTitle}
-                      </p>
-                      <p className="info__description">
-                        {item.snippet.description}
-                      </p>
-                    </div>
+            (Array.isArray(data) && (
+              <div>
+                <div className="data__info">
+                  <div className="results">About {data.length} results</div>
+                  <div className="filter">
+                    <img src="./filter.png" alt="filter" /> <span>FILTER</span>
                   </div>
-                );
-              }))}
+                </div>
+                {data.map((item: any) => {
+                  return (
+                    <div key={item.id.videoId} className="data__video">
+                      <iframe
+                        className="video__frame"
+                        title={item.id.videoId}
+                        width="300"
+                        height="200"
+                        src={`https://www.youtube.com/embed/${item.id.videoId}`}
+                      ></iframe>
+                      <div className="info">
+                        <h3 className="info__heading">{item.snippet.title}</h3>
+                        <p className="info__channel">
+                          {item.snippet.channelTitle}
+                        </p>
+                        <p className="info__description">
+                          {item.snippet.description}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
         </div>
       </div>
     </div>
