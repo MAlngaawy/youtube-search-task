@@ -3,6 +3,7 @@ import React from "react";
 import Navbar from "./components/Navbar.tsx";
 import "./App.scss";
 import { useStateContext } from "./contexts/ContextProvider";
+// @ts-ignore
 import loading from "./assets/loading.gif";
 
 const App = (): JSX.Element => {
@@ -24,6 +25,7 @@ const App = (): JSX.Element => {
                 return (
                   <div key={item.id.videoId} className="data__video">
                     <iframe
+                      className="video__frame"
                       title={item.id.videoId}
                       width="300"
                       height="200"
