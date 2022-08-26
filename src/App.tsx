@@ -3,7 +3,7 @@ import React from "react";
 import Navbar from "./components/Navbar.tsx";
 import "./App.scss";
 import { useStateContext } from "./contexts/ContextProvider";
-import loading from "./loading.gif";
+import loading from "./assets/loading.gif";
 
 const App = (): JSX.Element => {
   const { data } = useStateContext();
