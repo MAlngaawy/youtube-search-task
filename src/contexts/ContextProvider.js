@@ -13,7 +13,8 @@ export const ContextProvider = ({ children }) => {
       console.log(screenWidth);
       setScreenWidth(window.innerWidth);
     };
-  }, [screenWidth]);
+    console.log(data);
+  }, [screenWidth, data]);
 
   return (
     <StateContext.Provider

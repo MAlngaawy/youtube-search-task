@@ -28,28 +28,63 @@ const App = (): JSX.Element => {
                     <img src="./filter.png" alt="filter" /> <span>FILTER</span>
                   </div>
                 </div>
-                {data.map((item: any) => {
-                  return (
-                    <div key={item.id.videoId} className="data__video">
-                      <iframe
-                        className="video__frame"
-                        title={item.id.videoId}
-                        width="300"
-                        height="200"
-                        src={`https://www.youtube.com/embed/${item.id.videoId}`}
-                      ></iframe>
-                      <div className="info">
-                        <h3 className="info__heading">{item.snippet.title}</h3>
-                        <p className="info__channel">
-                          {item.snippet.channelTitle}
-                        </p>
-                        <p className="info__description">
-                          {item.snippet.description}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
+                <div className="videos_list">
+                  {data.map((item: any) => {
+                    if (item.id.kind === "youtube#video") {
+                      return (
+                        <div key={item.id.videoId} className="data__video">
+                          <div className="video_image">
+                            <img
+                              src={item.snippet.thumbnails.high.url}
+                              alt=""
+                            />
+                          </div>
+                          {/* <iframe
+                          className="video__frame"
+                          title={item.id.videoId}
+                          width="300"
+                          height="200"
+                          src={`https://www.youtube.com/embed/${item.id.videoId}`}
+                        ></iframe> */}
+                          <div className="info">
+                            <h3 className="info__heading">
+                              {item.snippet.title}
+                            </h3>
+                            <p className="info__channel">
+                              {item.snippet.channelTitle}
+                            </p>
+                            <p className="info__description">
+                              {item.snippet.description}
+                            </p>
+                          </div>
+                        </div>
+                      );
+                    } else if (item.id.kind === "youtube#channel") {
+                      console.log(item);
+                      return (
+                        <div key={item.id.videoId} className="data__video">
+                          <div className="channel_image">
+                            <img
+                              src={item.snippet.thumbnails.high.url}
+                              alt=""
+                            />
+                          </div>
+                          <div className="info">
+                            <h3 className="info__heading">
+                              {item.snippet.title}
+                            </h3>
+                            <p className="info__channel">
+                              {item.snippet.channelTitle}
+                            </p>
+                            <p className="info__description">
+                              {item.snippet.description}
+                            </p>
+                          </div>
+                        </div>
+                      );
+                    }
+                  })}
+                </div>
               </div>
             ))}
         </div>
