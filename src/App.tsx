@@ -32,6 +32,10 @@ const App = (): JSX.Element => {
                     if (item.id.kind === "youtube#video") {
                       return (
                         <div key={item.id.videoId} className="data__video">
+                          {/** The pdf doesn't explain if it need the video or it's cover in the body
+                           * so i have created the embad video here below .. if you want to test ..
+                           * comment the video__image div and unComment teh iframe tag
+                           */}
                           <div className="video_image">
                             <img
                               src={item.snippet.thumbnails.high.url}
