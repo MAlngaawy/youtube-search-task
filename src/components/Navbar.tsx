@@ -38,6 +38,7 @@ const SearchComponent = ({ setdata }) => {
   };
 
   async function submitFun(e) {
+    setdata("loading");
     e.preventDefault();
     handle();
   }
