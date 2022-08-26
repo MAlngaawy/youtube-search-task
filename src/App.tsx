@@ -16,8 +16,7 @@ const App = (): JSX.Element => {
           {(data == null && "") ||
             (data === "loading" && (
               <div className="loading">
-                {" "}
-                <img src={loading} alt="" />{" "}
+                <img src={loading} alt="" /> <span>Loading...</span>
               </div>
             )) ||
             (Array.isArray(data) && (

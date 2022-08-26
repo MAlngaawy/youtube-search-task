@@ -55,8 +55,14 @@ code {
     position: absolute;
     left: 45%;
     top: 45%;
+    text-align: center;
     img {
       width: 100px;
+    }
+    span {
+      display: block;
+      margin-top: 20px;
+      color: #535353;
     }
   }
   .data {
