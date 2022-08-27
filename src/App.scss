@@ -51,6 +51,13 @@ code {
       margin: auto 10px;
     }
   }
+  .home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-size: 30px;
+  }
   .loading {
     position: absolute;
     left: 45%;

@@ -4,8 +4,11 @@ import React, { useState } from "react";
 import request from "../api/youtube.ts";
 import { useStateContext } from "../contexts/ContextProvider";
 // @ts-ignore
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = (): JSX.Element => {
+  const navigate = useNavigate();
+  console.log(navigate);
   return (
     <nav className="navbar">
       <div className="navbar__container">
@@ -14,14 +17,14 @@ const Navbar = (): JSX.Element => {
           <Icon />
         </div>
         <div className="navbar__search">
-          <SearchComponent />
+          <SearchComponent navigate={navigate} />
         </div>
       </div>
     </nav>
   );
 };
 
-const SearchComponent = () => {
+const SearchComponent = ({ navigate }) => {
   const { setData, search, setSearch, screenWidth } = useStateContext();
   const [keyword, setKeyWord] = useState("");
   const handle = async () => {
@@ -40,6 +43,7 @@ const SearchComponent = () => {
   async function submitFun(e) {
     e.preventDefault();
     if (search === "input") {
+      navigate(`/search?query=${keyword}`);
       setData("loading");
       handle();
       setSearch("text");
