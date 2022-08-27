@@ -12,3 +12,10 @@ This project is a youtube search ( Tasl )
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+#### things would make the app better .. if there is a more time
+* hide the youtube API key in `.env` file ( but the reviewer will not be able to test it! )
+* write unit testing to make the code more clean
+* add the filter feature
+* handle playing the video in a separated section
+* in general .. the app could be more better if there is a more time
