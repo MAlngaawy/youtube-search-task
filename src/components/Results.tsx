@@ -2,6 +2,7 @@ import React from "react";
 import "../App.scss";
 // @ts-ignore
 import { useStateContext } from "../contexts/ContextProvider";
+// @ts-ignore
 import loading from "../assets/loading.gif";
 
 const Results = (): JSX.Element => {
@@ -57,7 +58,10 @@ const Results = (): JSX.Element => {
                   return (
                     <div key={item.id.videoId} className="data__video">
                       <div className="channel_image">
-                        <img src={item.snippet.thumbnails.high.url} alt="" />
+                        <img
+                          src={item.snippet.thumbnails.high.url}
+                          alt="channel_image"
+                        />
                       </div>
                       <div className="info">
                         <h3 className="info__heading">{item.snippet.title}</h3>
@@ -71,7 +75,26 @@ const Results = (): JSX.Element => {
                     </div>
                   );
                 } else {
-                  return <div>This is Not a youtube video</div>;
+                  return (
+                    <div key={item.id.videoId} className="data__video">
+                      <div className="video_image">
+                        <img src={item.snippet.thumbnails.high.url} alt="" />
+                        <div className="plsylist">
+                          <span className="shape"></span>
+                          <span className="text"> Playlist </span>
+                        </div>
+                      </div>
+                      <div className="info">
+                        <h3 className="info__heading">{item.snippet.title}</h3>
+                        <p className="info__channel">
+                          {item.snippet.channelTitle}
+                        </p>
+                        <p className="info__description">
+                          {item.snippet.description}
+                        </p>
+                      </div>
+                    </div>
+                  );
                 }
               })}
             </div>
