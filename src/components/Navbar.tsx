@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import request from "../api/youtube.ts";
 import { useStateContext } from "../contexts/ContextProvider";
 // @ts-ignore
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = (): JSX.Element => {
   const navigate = useNavigate();

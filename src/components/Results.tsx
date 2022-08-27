@@ -70,6 +70,8 @@ const Results = (): JSX.Element => {
                       </div>
                     </div>
                   );
+                } else {
+                  return <div>This is Not a youtube video</div>;
                 }
               })}
             </div>
