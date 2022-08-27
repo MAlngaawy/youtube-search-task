@@ -54,7 +54,6 @@ const Results = (): JSX.Element => {
                     </div>
                   );
                 } else if (item.id.kind === "youtube#channel") {
-                  console.log(item);
                   return (
                     <div key={item.id.videoId} className="data__video">
                       <div className="channel_image">

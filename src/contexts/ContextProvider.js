@@ -10,10 +10,8 @@ export const ContextProvider = ({ children }) => {
   useEffect(() => {
     setScreenWidth(window.innerWidth);
     window.onresize = () => {
-      console.log(screenWidth);
       setScreenWidth(window.innerWidth);
     };
-    console.log(data);
   }, [screenWidth, data]);
 
   return (

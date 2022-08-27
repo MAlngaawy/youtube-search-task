@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 
 const Navbar = (): JSX.Element => {
   const navigate = useNavigate();
-  console.log(navigate);
   return (
     <nav className="navbar">
       <div className="navbar__container">
